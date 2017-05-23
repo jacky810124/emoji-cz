@@ -2,9 +2,9 @@ const findConfig = require('find-config');
 
 const PKG_NAME = 'emoji-cz';
 
-const getConfig = () => {
+const getConfig = (cwd) => {
   // find package.json
-  const cwd = process.cwd();
+  cwd = cwd || process.cwd();
   const pkg = findConfig.require('package.json', { cwd });
   if (pkg && pkg.config && pkg.config.commitizen && pkg.config.commitizen[PKG_NAME]) {
     return pkg.config.commitizen[PKG_NAME];
